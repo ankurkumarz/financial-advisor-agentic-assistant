@@ -1,4 +1,43 @@
+### Problem Statement
 
+- Wealth advisors struggle with fragmented information, and they need to access multiple systems to correlate and synthesize data. Common systems used by wealth advisors include CRM platforms (e.g., Salesforce, Zoho), Portfolio management tools (e.g., Envestnet, Yodlee), Research platforms (e.g., Yahoo Finance, Morningstar), Financial planning (e.g., Yodlee, MoneyGuidePro), and various market data sources (Pershing, Broadridge). However, these systems have different user interfaces and data retrieval approaches, which makes it slow, manual, and error-prone for advisors to find the right insight at the right moment.
+- This slows down advisor productivity, increases compliance risk, and limits their ability to deliver timely, personalized advice to their clients.
+
+### Solution Statement
+
+The overall solution is built applying the multi-agent system architecture and *Google ADK* as the underlying framework & *Vertex AI Agent Engine* as Cloud Services with key highlights as:
+- Agents can autonomously coordinate tasks like retrieving data, summarizing insights, and validating the results as per enterprise-specific guidelines
+- Additionally, agents can elevate the conversation with advisors to understand the need better and act accordingly. Reasoning after retrieving data from multiple systems helps to synthesize the information, not just data retrieval.
+- Agents can continuously learn from user interactions, remember previous interactions, and use feedback loops to enhance the system incrementally.
+- In the future, Agents can also delegate actions to other AI Agents based on the insights discovered, such as updating the CRM system for the next client conversation, reviewing the financial plan, proactively using the interaction to update client communication history, etc.
+
+### Architecture
+
+FA³AI is an agentic knowledge assistant that unifies data and reasoning for wealth advisors.
+The architecture leverages a multi-agent system (MAS) design using the ADK framework with agents as:
+- `knowledge_orchestrator_agent`: Acts as the central intelligence layer, coordinating an ecosystem of specialized agents. It interprets user intent and routes requests to the right agents for knowledge retrieval across multiple systems. *Google’s Agent Development Kit (ADK)* enables the creation of this centralized orchestrator with built-in reliability, security, and enterprise-grade capabilities. [Workflow Agents](https://google.github.io/adk-docs/agents/workflow-agents/) orchestrator capability helps to manage the execution flow of sub-agents.
+-  `knowledge_planner`:  Responsible for designing a comprehensive plan to answer the user’s question based on the user's intent. It creates an execution plan by leveraging the capabilities of available sub-agents and their tools. The planner also applies techniques such as query rewriting or rephrasing when the user’s request is unclear, and retrieves relevant memories from the memory bank when necessary. [Vertex AI Agent Engine Memory](https://docs.cloud.google.com/agent-builder/agent-engine/memory-bank/overview) provides the capability to generate long-term memories based on the advisor's conversations and retrieve them as needed.
+-  `knowledge_retriever`: Responsible for fetching data from unstructured data sources within the enterprise (e.g., PDF documents, knowledge base from CMS systems, etc.) and providing the results. Applying strategies such as multi-query retrieval and reranking to provide quality results as per the advisor's query.
+- `content_reviewer`:  Acts as a content validator, ensuring the response is complete, accurate, and aligned with legal and compliance requirements. It verifies that the advisor’s question is fully addressed and meets regulatory standards.
+
+### Extending Solution
+
+If additional time is available, the above solution to be expanded using the construct below. 
+As per the enterprise context, additional agents to be expanded to enrich FA³AI's agentic knowledge assistant, such as:
+- `portfolio_management_agent`: Retrieving and reasoning with enterprise solutions such as *Envestnet, Yodlee* - each system can be accessed with a specialized associated tool
+- `financial_research_agent`: Researching from the downstream third-party tools for *Morningstar, Yahoo Finance*, and consolidating the knowledge
+- `crm_analyzer_agent`: Retrieves client's data from CRM systems such as *Salesforce, Zoho, Redtail,* etc. 
+- `financial_planning_agent`: Fetches the client's financial plan (as needed) and use  this information to contextualize the information to answer the related questions
+
+### Technical Implementation Details
+
+| Component | Technology | Purpose |
+| :--- | :--- | :--- |
+| **Agent Framework** | **Google Agent Development Kit (ADK)** | The core framework for defining, developing, and coordinating the multi-agent system, including all agent logic and workflows. |
+| **Agent Hosting** | **Vertex AI Agent Engine Runtime** | A fully managed, serverless environment for deploying, running, and scaling the entire ADK-based agent application. |
+| **Long-Term Memory**| **Vertex AI Agent Engine Memory Bank** | Provides persistent, long-term memory, enabling agents to learn from and recall information across multiple conversations. |
+| **Session Memory** | **Vertex AI Agent Engine Session Service** | Manages the short-term context and history of a single, ongoing conversation for immediate relevance. |
+| **MCP Tools Hosting** | **Google Cloud Run** | A serverless platform for hosting the Model Context Protocol (MCP) servers, which act as secure and scalable tools for agents to interact with external data sources (e.g., CRMs, APIs). |
 
 ### Architecture View
 
@@ -43,6 +82,12 @@ graph LR
   class R rev;
   class FA future;
 ```
+
+### Value Statement
+
+- **Increased Advisor Efficiency**:  Higher advisor efficiency by 25-30% (10-12 hours/week efforts saved with seamless access to data from a diverse set of systems)
+- **Higher Engagement Rate**: 10-20% higher engagement rate with clients, with valuable insights enriching personalized engagement
+- **Quicker Decision Making**: Ease of decision making around products, servicing, client portfolio, market insights, etc.  based on synthesized information
 
 ### FA³AI: Consolidated Agent Tools and Utilities (including Future Tools)
 
