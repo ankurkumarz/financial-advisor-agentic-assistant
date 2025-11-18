@@ -20,6 +20,17 @@ The architecture leverages a multi-agent system (MAS) design using the ADK frame
 -  `knowledge_retriever`: Responsible for fetching data from unstructured data sources within the enterprise (e.g., PDF documents, knowledge base from CMS systems, etc.) and providing the results. Applying strategies such as multi-query retrieval and reranking to provide quality results as per the advisor's query.
 - `content_reviewer`:  Acts as a content validator, ensuring the response is complete, accurate, and aligned with legal and compliance requirements. It verifies that the advisor’s question is fully addressed and meets regulatory standards.
 
+**Patterns Applied**:
+
+- *LLM Orchestrator Pattern* for dynamic decision-making by Gemini as LLM
+- *MCP Integration Pattern* for connecting to external, standardized services such as CRM Tools, Third-party Services
+- *Session Management* using `Session Service` and `Persistent Session` for enterprises (surviving restarts, failovers)
+- *Context Compaction* to automatically reduce the context that's stored in the Session (future advancement)
+- *Agent Observability* with `LoggingPlugin` for production systems
+- *Agent Evaluation* with Google ADK (regression testing using adk eval, Tool trajectory and response metrics)
+- *Agent Deployment* with `Vertex AI Agent Engine` and long-term memory with `Vertex AI Memory Bank`
+- *Agent Communication* using A2A protocol as a standardized protocol for agent-to-agent communication  (to be implemented for future use as an enterprise expanding solution with external vendors)
+
 ### Extending Solution
 
 If additional time is available, the above solution to be expanded using the construct below. 
