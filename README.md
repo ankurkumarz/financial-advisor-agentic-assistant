@@ -44,8 +44,6 @@ graph LR
   class FA future;
 ```
 
-Of course. Here is the consolidated list of essential agent tools and utilities, with the security-focused system guardrails removed, in a single Markdown table.
-
 ### FA³AI: Consolidated Agent Tools and Utilities (including Future Tools)
 
 | Tool / Utility | Primary Agent(s) | Purpose |
