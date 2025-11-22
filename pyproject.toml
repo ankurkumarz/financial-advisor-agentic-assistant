@@ -1,0 +1,16 @@
+[project]
+name = "financial-advisor-agentic-assistant"
+version = "0.1.0"
+description = "FA³AI is an agentic knowledge assistant that unifies data and reasoning for wealth advisors. he architecture leverages a multi-agent system (MAS) design using the ADK framework with multiple agents."
+authors = [{ name = "Ankur Kumar" }]
+license = "Apache-2.0"
+readme = "README.md"
+requires-python = ">=3.13.1"
+dependencies = [
+    "chromadb>=1.3.5",
+    "google-adk>=1.19.0",
+    "google-generativeai>=0.8.5",
+    "pydantic>=2.12.4",
+    "pydantic-settings>=2.12.0",
+    "pypdf>=6.3.0",
+]
