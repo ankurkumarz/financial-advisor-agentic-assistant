@@ -118,8 +118,8 @@ ipython_config.py
 .pdm-build/
 chroma_db/
 uv.lock
-CLAUDE.MD
-GEMINI.MD
+CLAUDE.md
+GEMINI.md
 # pixi
 #   Similar to Pipfile.lock, it is generally recommended to include pixi.lock in version control.
 #pixi.lock

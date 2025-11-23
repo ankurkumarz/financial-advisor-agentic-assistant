@@ -17,7 +17,7 @@ FA³AI is an agentic knowledge assistant that unifies data and reasoning for wea
 The architecture leverages a multi-agent system (MAS) design using the ADK framework with agents as:
 - `financial_advisor_agent`: Acts as the central intelligence layer, coordinating an ecosystem of specialized agents. It interprets user intent and routes requests to the right agents for knowledge retrieval across multiple systems. *Google’s Agent Development Kit (ADK)* enables the creation of this centralized orchestrator with built-in reliability, security, and enterprise-grade capabilities. [Workflow Agents](https://google.github.io/adk-docs/agents/workflow-agents/) orchestrator capability helps to manage the execution flow of sub-agents.
 - `financial_enterprise_docs_agent`: Enterprise-specific knowledge retriever agent accessing proprietary, unstructured enterprise financial data sources such as PDFs and CMS-based knowledge hubs to enrich advisor responses with comprehensive document insights.
-- `crm_prospects_insights_agent`: Client and prospect insights agent integrating CRM data (e.g., Salesforce, Zoho, Redtail) to provide structured, actionable customer relationship and pipeline intelligence in response to advisor queries.
+- `crm_leads_insights_agent`: CRM Leads and Prospects insights agent integrating CRM data (e.g., Salesforce, Zoho, Redtail, Hubspot) to provide structured, actionable customer relationship and pipeline intelligence in response to advisor queries.
 - `compliance_checker_agent`:  Content validation agent ensuring advisor responses are complete, accurate, compliant with legal and regulatory standards, and that any personal or sensitive information is detected and redacted from outputs.
 
 **Patterns Applied**:
@@ -26,7 +26,7 @@ The architecture leverages a multi-agent system (MAS) design using the ADK frame
 - *MCP Integration Pattern* for connecting to external, standardized services such as CRM Tools, Third-party Services
 - *Session Management* using `Session Service` and `Persistent Session` for enterprises (surviving restarts, failovers)
 - *Context Compaction* to automatically reduce the context that's stored in the Session (future advancement)
-- *Agent Observability* with `LoggingPlugin` for production systems
+- *Agent Observability* with `LoggingPlugin` for production systems and `ADK Web UI` for development and testing
 - *Agent Evaluation* with Google ADK (regression testing using adk eval, Tool trajectory and response metrics)
 - *Agent Deployment* with `Vertex AI Agent Engine` and long-term memory with `Vertex AI Memory Bank`
 - *Agent Communication* using A2A protocol as a standardized protocol for agent-to-agent communication  (to be implemented for future use as an enterprise expanding solution with external vendors)
@@ -105,6 +105,7 @@ graph LR
 | Tool / Utility | Primary Agent(s) | Purpose |
 | :--- | :--- | :--- |
 | **VectorSearchTool** | `knowledge_retriever` | Searches internal documents (PDFs, CMS) using vector embeddings to find relevant information. |
+| **GoogleSearchTool** | `knowledge_retriever` | Searches Google using the Google Search API to find relevant information. |
 | **CrmApiTool** | `crm_analyzer_agent` | **Reads** client data, history, and notes from CRM systems like Salesforce or Redtail. |
 | **PortfolioApiTool** | `portfolio_management_agent` | **Reads** client portfolio holdings, performance, and asset allocation from systems like Envestnet. |
 | **FinancialMarketDataTool**| `financial_research_agent` | **Fetches** live and historical market data (stocks, funds) from third-party sources like Morningstar. |

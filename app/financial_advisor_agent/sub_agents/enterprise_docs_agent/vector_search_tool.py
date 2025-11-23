@@ -4,7 +4,7 @@ from typing import Any, Dict, List, Optional
 from pypdf import PdfReader
 import chromadb
 from chromadb.utils import embedding_functions
-from financial_advisor_agent.utils.logger import setup_logger 
+from ...utils.logger import setup_logger 
 
 logger = setup_logger(__name__)
 
@@ -58,31 +58,41 @@ class VectorSearchTool:
         logger.info(f"📂 scanning folder: {folder_path}")
         
         for filename in os.listdir(folder_path):
-            if filename.lower().endswith(".pdf"):
-                file_path = os.path.join(folder_path, filename)
-                try:
+            file_path = os.path.join(folder_path, filename)
+            full_text = ""
+            
+            try:
+                if filename.lower().endswith(".pdf"):
                     reader = PdfReader(file_path)
-                    full_text = ""
                     for page in reader.pages:
                         full_text += page.extract_text() + "\n"
-                    
-                    text_chunks = self._chunk_text(full_text)
-                    if not text_chunks: continue
+                
+                elif filename.lower().endswith(".json"):
+                    import json
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                        # Convert JSON to string representation for embedding
+                        full_text = json.dumps(data, indent=2)
+                else:
+                    continue
 
-                    # Generate IDs and Metadata
-                    ids = [f"{filename}_{i}_{str(uuid.uuid4())[:8]}" for i in range(len(text_chunks))]
-                    metadatas = [{"source": filename, "chunk_index": i} for i in range(len(text_chunks))]
-                    
-                    self.collection.add(
-                        documents=text_chunks,
-                        metadatas=metadatas,
-                        ids=ids
-                    )
-                    total_chunks += len(text_chunks)
-                    print(f"   ✅ Indexed {filename} ({len(text_chunks)} chunks)")
-                    
-                except Exception as e:
-                    logger.error(f"Error reading {filename}: {e}")
+                text_chunks = self._chunk_text(full_text)
+                if not text_chunks: continue
+
+                # Generate IDs and Metadata
+                ids = [f"{filename}_{i}_{str(uuid.uuid4())[:8]}" for i in range(len(text_chunks))]
+                metadatas = [{"source": filename, "chunk_index": i} for i in range(len(text_chunks))]
+                
+                self.collection.add(
+                    documents=text_chunks,
+                    metadatas=metadatas,
+                    ids=ids
+                )
+                total_chunks += len(text_chunks)
+                print(f"   ✅ Indexed {filename} ({len(text_chunks)} chunks)")
+                
+            except Exception as e:
+                logger.error(f"Error reading {filename}: {e}")
                     
         return total_chunks
 
