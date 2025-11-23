@@ -120,7 +120,7 @@ chroma_db/
 uv.lock
 CLAUDE.md
 GEMINI.md
-global_banking_customer_analytics.csv
+/global_banking_customer_analytics.csv
 # pixi
 #   Similar to Pipfile.lock, it is generally recommended to include pixi.lock in version control.
 #pixi.lock
