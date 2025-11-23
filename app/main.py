@@ -22,6 +22,7 @@ app: FastAPI = get_fast_api_app(
 
 app.title = "financial-advisor-agentic"
 app.description = "API for interacting with the Agent Financial Advisor Agent"
+app.version = "1.0.0"
 
 def main():
     """Main entry point for running the FastAPI application."""

@@ -15,6 +15,7 @@ dependencies = [
     "pydantic>=2.12.4",
     "pydantic-settings>=2.12.0",
     "pypdf>=6.3.0",
+    "rouge-score>=0.1.2",
 ]
 
 [project.scripts]
@@ -24,7 +25,7 @@ start = "app.main:main"
 package = true
 
 [tool.setuptools]
-packages = ["app"]
+packages = ["app", "app.financial_advisor_agent"]
 
 [build-system]
 requires = ["setuptools>=61.0"]

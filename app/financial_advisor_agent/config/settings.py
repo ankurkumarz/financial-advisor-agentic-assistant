@@ -38,6 +38,9 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     log_format: str = "json"
 
+    # Session & Memory
+    session_storage: Optional[str] = "memory" 
+
     # Application
     max_retries: int = 3
     timeout_seconds: int = 30
