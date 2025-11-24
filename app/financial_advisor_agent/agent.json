@@ -1,0 +1,48 @@
+{
+    "name": "financial_advisor_agent",
+    "description": "Agent specializing in financial advisory tasks and orchestrating sub-agents for compliance, CRM, and enterprise document queries.",
+    "version": "1.0.0",
+    "url": "http://localhost:8000/a2a/financial_advisor_agent",
+    "capabilities": {},
+    "skills": [
+        {
+            "id": "compliance_checker_agent",
+            "name": "Compliance Checker",
+            "description": "Compliance Checker for Advisors to ensure responses are complete, accurate, compliant with legal and regulatory standards.",
+            "tags": [
+                "compliance"
+            ]
+        },
+        {
+            "id": "crm_leads_insights_agent",
+            "name": "CRM Leads Insights",
+            "description": "Insights agent for CRM Leads and Prospects.",
+            "tags": [
+                "crm_insights"
+            ]
+        },
+        {
+            "id": "financial_enterprise_docs_agent",
+            "name": "Enterprise Docs Retriever",
+            "description": "Retrieves relevant financial documents from internal knowledge base.",
+            "tags": [
+                "document_processing"
+            ]
+        },
+        {
+            "id": "google_research_agent",
+            "name": "Google Research",
+            "description": "Researcher for information using Google search.",
+            "tags": [
+                "query",
+                "research"
+            ]
+        }
+    ],
+    "defaultInputModes": [
+        "application/json"
+    ],
+    "defaultOutputModes": [
+        "application/json"
+    ]
+}

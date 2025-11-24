@@ -118,6 +118,7 @@ ipython_config.py
 .pdm-build/
 chroma_db/
 uv.lock
+.adk/
 CLAUDE.md
 GEMINI.md
 /global_banking_customer_analytics.csv
