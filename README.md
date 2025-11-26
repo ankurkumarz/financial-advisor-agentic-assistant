@@ -54,44 +54,48 @@ As per the enterprise context, additional agents to be expanded to enrich FA³AI
 
 ```mermaid
 graph LR
-  %% Actors
+  %% Actor
   U[Wealth Advisor]
 
   %% Core
   subgraph Core["FA³AI Agentic System"]
-    CA[Knowledge Orchestrator Agent]
+    FA_AG[financial_advisor_agent]
   end
 
-  %% Supporting components
-  M[Memory / Knowledge Store]
-  DS[Data Sources & Enterprise Systems]
-  R[Compliance & Content Reviewer]
+  %% Supporting Agents
+  FED[financial_enterprise_docs_agent]
+  CRM[crm_leads_insights_agent]
+  CC[compliance_checker_agent]
   FA[Future Domain Agents]
 
+  %% Data + Memory
+  M[Memory / Knowledge Store]
+  DS[Enterprise Data Sources]
+
   %% Flow
-  U -->|1. query| CA
-  CA -->|2. read/write| M
-  CA -->|3. fetch data| DS
-  CA -->|4. draft response| R
-  R -->|5. validated| CA
-  CA -->|6. final response| U
+  U -->|query| FA_AG
+  FA_AG -->|read/write| M
+  FA_AG -->|retrieve docs| FED
+  FA_AG -->|retrieve crm data| CRM
+  FA_AG -->|delegate| FA
 
-  %% Delegation
-  CA -->|delegate| FA
-  FA -->|results| CA
+  FED -->|data| DS
+  CRM -->|data| DS
 
-  %% Styling (keeps it minimal)
+  FED -->|results| FA_AG
+  CRM -->|results| FA_AG
+  FA -->|results| FA_AG
+
+  FA_AG -->|validate| CC
+  CC -->|approved| FA_AG
+
+  FA_AG -->|response| U
+
+  %% Styling
   classDef core fill:#cce5ff,stroke:#333;
   classDef mem fill:#fff7cc,stroke:#333;
   classDef ds fill:#f1f1f1,stroke:#333;
-  classDef rev fill:#f8d7da,stroke:#333;
-  classDef future fill:#d4edda,stroke:#333,stroke-dasharray:5 5;
-
-  class CA core;
-  class M mem;
-  class DS ds;
-  class R rev;
-  class FA future;
+  classDef rev fill:#f8d7da,str
 ```
 
 ### Value Statement
