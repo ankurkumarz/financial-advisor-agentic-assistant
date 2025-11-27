@@ -122,5 +122,3 @@ graph LR
 | **CrmUpdateTool** | `knowledge_orchestrator_agent` | **Writes** data back to the CRM, such as logging a summary of the client interaction. |
 | **NotificationTool** | `knowledge_orchestrator_agent` | Sends proactive alerts or notifications to the advisor via email or chat. |
 | **InteractionLogger** | `knowledge_orchestrator_agent` | Saves the final query, response, and feedback to the Memory Bank for continuous learning and auditing. |
-
-
