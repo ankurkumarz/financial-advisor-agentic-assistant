@@ -20,7 +20,7 @@ The architecture leverages a multi-agent system (MAS) design using the ADK frame
 - `crm_leads_insights_agent`: CRM Leads and Prospects insights agent integrating CRM data (e.g., Salesforce, Zoho, Redtail, Hubspot) to provide structured, actionable customer relationship and pipeline intelligence in response to advisor queries.
 - `compliance_checker_agent`:  Content validation agent ensuring advisor responses are complete, accurate, compliant with legal and regulatory standards, and that any personal or sensitive information is detected and redacted from outputs.
 
-![Architecture Building Blocks](docs/architecture/agentic-architecture.jpeg) 
+![Architecture Building Blocks](docs/architecture/agent-architecture.jpeg) 
 
 **Patterns Applied**:
 
