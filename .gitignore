@@ -119,6 +119,7 @@ ipython_config.py
 chroma_db/
 uv.lock
 .adk/
+backlog/
 CLAUDE.md
 GEMINI.md
 /global_banking_customer_analytics.csv
