@@ -14,6 +14,8 @@ set_with_conversation_scenarios --scenarios_file convo.json \
 
 ## Running Evaluation
 
+> Read about User Simulation with Conversation Scenarios in the [Google Blog](https://cloud.google.com/ai-platform/docs/adk/user-simulator)
+
 - Change to `app` folder to run from the ADK CLI
 - Running Conversation Scenarios Evaluation
 

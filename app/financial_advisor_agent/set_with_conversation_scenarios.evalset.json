@@ -3,7 +3,7 @@
   "name": "set_with_conversation_scenarios",
   "eval_cases": [
     {
-      "eval_id": "3c667696",
+      "eval_id": "summarize_internal_memo",
       "conversation_scenario": {
         "starting_prompt": "Hi, summarize the internal memo shared with me!",
         "conversation_plan": "Find the document stored in the Enterprise documnetation and summarize it for me."
