@@ -22,6 +22,7 @@ dependencies = [
 
 [project.scripts]
 start = "app.main:main"
+run-eval = "app.eval_wrapper:run_eval"
 
 [tool.uv]
 package = true

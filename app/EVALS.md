@@ -12,7 +12,24 @@ set_with_conversation_scenarios --scenarios_file convo.json \
 --log_level=CRITICAL
 ```
 
-## Running Evaluation
+## Running Evaluation (Prod)
+
+- Run default:
+```
+uv run run-eval
+```
+
+- Run specific:
+```
+uv run run-eval <eval_set_id>
+```
+
+- Run all:
+```
+uv run run-eval --all
+```
+
+## Running Evaluation (User Simulation Scenarios)
 
 > Read about User Simulation with Conversation Scenarios in the [Google Blog](https://cloud.google.com/ai-platform/docs/adk/user-simulator)
 
