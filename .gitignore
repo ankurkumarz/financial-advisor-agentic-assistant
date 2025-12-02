@@ -122,6 +122,7 @@ uv.lock
 backlog/
 CLAUDE.md
 GEMINI.md
+app/global_banking_customer_analytics.csv
 /global_banking_customer_analytics.csv
 # pixi
 #   Similar to Pipfile.lock, it is generally recommended to include pixi.lock in version control.

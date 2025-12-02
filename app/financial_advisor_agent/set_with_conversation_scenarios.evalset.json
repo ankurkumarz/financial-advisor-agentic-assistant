@@ -1,0 +1,19 @@
+{
+  "eval_set_id": "set_with_conversation_scenarios",
+  "name": "set_with_conversation_scenarios",
+  "eval_cases": [
+    {
+      "eval_id": "3c667696",
+      "conversation_scenario": {
+        "starting_prompt": "Hi, summarize the internal memo shared with me!",
+        "conversation_plan": "Find the document stored in the Enterprise documnetation and summarize it for me."
+      },
+      "session_input": {
+        "app_name": "financial_advisor_agent",
+        "user_id": "test_user_001"
+      },
+      "creation_timestamp": 1764639205.454749
+    }
+  ],
+  "creation_timestamp": 1764638711.093204
+}
